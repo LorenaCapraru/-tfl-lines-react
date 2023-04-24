@@ -3,7 +3,7 @@ import "./App.css";
 import Selector from "./Selector";
 
 function App() {
-  const [modes, setModes] = useState("");
+  const [modes, setModes] = useState([]);
 
   useEffect(() => {
     fetch(`https://api.tfl.gov.uk/Line/Meta/modes`)
@@ -17,6 +17,7 @@ function App() {
   return (
     <div className="App">
       <Selector modes={modes} />
+      {/* {modes.map((el) => el.modeName)} */}
     </div>
   );
 }
