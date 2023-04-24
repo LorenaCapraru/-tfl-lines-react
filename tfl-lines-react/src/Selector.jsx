@@ -3,7 +3,7 @@ import { useState, React } from "react";
 export default function Selector(props) {
   const [selectedValue, setSelectedValue] = useState("");
   let handleSelectChange = (e) => {
-    selectedValue(e.target.value);
+    setSelectedValue(e.target.value);
   };
 
   return (
@@ -19,13 +19,21 @@ export default function Selector(props) {
         ))}
       </select>
 
-      {selectedValue ? (
+      {/* {selectedValue.length > 0 ? (
         <div className="card">
-          {props.data
+          {props.modes
             .filter((el) => el.selectMode === selectedValue)
-            .map((el) => el.modeName)}
+            .map((el) => (
+              <span>{el.modeName}</span>
+            ))}
         </div>
-      ) : null}
+      ) : null} */}
+      {selectedValue !== "Choose a Mode of transport..." &&
+      selectedValue.length > 0 ? (
+        <span>Working</span>
+      ) : (
+        <span>Waiting to choose</span>
+      )}
     </div>
   );
 }
