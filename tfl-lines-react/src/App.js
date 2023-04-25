@@ -10,7 +10,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setModes(data);
-        console.log(data);
       });
   }, []);
 

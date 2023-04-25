@@ -1,10 +1,25 @@
-import { useState, React } from "react";
+import { useState, useEffect, React } from "react";
 
 export default function Selector(props) {
   const [selectedValue, setSelectedValue] = useState("");
   let handleSelectChange = (e) => {
     setSelectedValue(e.target.value);
   };
+
+  const [selectLine, setSelectLine] = useState("");
+  const handleSelectLine = (e) => {
+    setSelectLine(e.target.value);
+  };
+
+  const [linesData, setLinesData] = useState("");
+  useEffect(() => {
+    fetch(`https://api.tfl.gov.uk/Line/Mode/${selectedValue}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setLinesData(data);
+      });
+  }, [selectedValue]);
 
   return (
     <div>
@@ -19,20 +34,21 @@ export default function Selector(props) {
         ))}
       </select>
 
-      {/* {selectedValue.length > 0 ? (
-        <div className="card">
-          {props.modes
-            .filter((el) => el.selectMode === selectedValue)
-            .map((el) => (
-              <span>{el.modeName}</span>
-            ))}
-        </div>
-      ) : null} */}
       {selectedValue !== "Choose a Mode of transport..." &&
       selectedValue.length > 0 ? (
-        <span>Working</span>
+        <select value={selectLine} onChange={handleSelectLine}>
+          <option>Select a line...</option>
+          {linesData.map((el) => (
+            <option>{el.name}</option>
+          ))}
+          <option>
+            {linesData.map((el) =>
+              el.disruptions.map((el) => el.affectedRoutes.map((el) => el.name))
+            )}
+          </option>
+        </select>
       ) : (
-        <span>Waiting to choose</span>
+        <span>Waiting to choosee</span>
       )}
     </div>
   );
