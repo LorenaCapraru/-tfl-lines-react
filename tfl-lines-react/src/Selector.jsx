@@ -48,7 +48,7 @@ export default function Selector(props) {
           </option>
         </select>
       ) : (
-        <span>Waiting to choosee</span>
+        <span>Waiting to choose</span>
       )}
     </div>
   );
