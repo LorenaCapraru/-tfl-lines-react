@@ -11,14 +11,16 @@ export default function Selector(props) {
     setSelectLine(e.target.value);
   };
 
-  const [linesData, setLinesData] = useState("");
+  const [linesData, setLinesData] = useState([]);
   useEffect(() => {
-    fetch(`https://api.tfl.gov.uk/Line/Mode/${selectedValue}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setLinesData(data);
-      });
+    if (selectedValue) {
+      fetch(`https://api.tfl.gov.uk/Line/Mode/${selectedValue}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setLinesData(data);
+        });
+    }
   }, [selectedValue]);
 
   return (
@@ -41,11 +43,6 @@ export default function Selector(props) {
           {linesData.map((el) => (
             <option>{el.name}</option>
           ))}
-          <option>
-            {linesData.map((el) =>
-              el.disruptions.map((el) => el.affectedRoutes.map((el) => el.name))
-            )}
-          </option>
         </select>
       ) : (
         <span>Waiting to choose</span>
