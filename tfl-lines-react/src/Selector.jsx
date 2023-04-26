@@ -35,15 +35,19 @@ export default function Selector(props) {
           <option>{el.modeName}</option>
         ))}
       </select>
+      <p>You selected: {selectedValue}</p>
 
       {selectedValue !== "Choose a Mode of transport..." &&
       selectedValue.length > 0 ? (
-        <select value={selectLine} onChange={handleSelectLine}>
-          <option>Select a line...</option>
-          {linesData.map((el) => (
-            <option>{el.name}</option>
-          ))}
-        </select>
+        <>
+          <select value={selectLine} onChange={handleSelectLine}>
+            <option>Select a line...</option>
+            {linesData.map((el) => (
+              <option>{el.name}</option>
+            ))}
+          </select>
+          <p>You selected: {selectLine}</p>
+        </>
       ) : (
         <span>Waiting to choose</span>
       )}
