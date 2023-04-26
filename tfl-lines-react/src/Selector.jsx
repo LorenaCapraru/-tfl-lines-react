@@ -5,7 +5,6 @@ export default function Selector(props) {
   const [selectLine, setSelectLine] = useState("");
   const [linesData, setLinesData] = useState([]);
   const [route, setRoute] = useState([]);
-  // console.log(route.routeSections[0].destinationName);
 
   let handleSelectChange = (e) => {
     setSelectedValue(e.target.value);
