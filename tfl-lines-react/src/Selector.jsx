@@ -2,16 +2,19 @@ import { useState, useEffect, React } from "react";
 
 export default function Selector(props) {
   const [selectedValue, setSelectedValue] = useState("");
+  const [selectLine, setSelectLine] = useState("");
+  const [linesData, setLinesData] = useState([]);
+  const [route, setRoute] = useState([]);
+  // console.log(route.routeSections[0].destinationName);
+
   let handleSelectChange = (e) => {
     setSelectedValue(e.target.value);
   };
 
-  const [selectLine, setSelectLine] = useState("");
   const handleSelectLine = (e) => {
     setSelectLine(e.target.value);
   };
 
-  const [linesData, setLinesData] = useState([]);
   useEffect(() => {
     if (selectedValue) {
       fetch(`https://api.tfl.gov.uk/Line/Mode/${selectedValue}`)
@@ -22,6 +25,17 @@ export default function Selector(props) {
         });
     }
   }, [selectedValue]);
+
+  useEffect(() => {
+    if (selectLine) {
+      fetch(`https://api.tfl.gov.uk/Line/${selectLine}/Route`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setRoute(data);
+        });
+    }
+  }, [selectLine]);
 
   return (
     <div>
@@ -35,7 +49,7 @@ export default function Selector(props) {
           <option>{el.modeName}</option>
         ))}
       </select>
-      <p>You selected: {selectedValue}</p>
+      <p>You Selected Mode: {selectedValue}</p>
 
       {selectedValue !== "Choose a Mode of transport..." &&
       selectedValue.length > 0 ? (
@@ -46,11 +60,12 @@ export default function Selector(props) {
               <option>{el.name}</option>
             ))}
           </select>
-          <p>You selected: {selectLine}</p>
+          <p>You Selected Line: {selectLine}</p>
         </>
       ) : (
         <span>Waiting to choose</span>
       )}
+      {/* {route ? <p>OriginationName:{route.(disruptions[0]).id}</p> : null} */}
     </div>
   );
 }
