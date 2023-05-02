@@ -1,10 +1,11 @@
 import { useState, useEffect, React } from "react";
+import RouteCards from "./RouteCards";
 
 export default function Selector(props) {
   const [selectedValue, setSelectedValue] = useState("");
   const [selectLine, setSelectLine] = useState("");
   const [linesData, setLinesData] = useState([]);
-  const [route, setRoute] = useState([]);
+  const [route, setRoute] = useState({});
 
   let handleSelectChange = (e) => {
     setSelectedValue(e.target.value);
@@ -19,7 +20,6 @@ export default function Selector(props) {
       fetch(`https://api.tfl.gov.uk/Line/Mode/${selectedValue}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setLinesData(data);
         });
     }
@@ -30,11 +30,13 @@ export default function Selector(props) {
       fetch(`https://api.tfl.gov.uk/Line/${selectLine}/Route`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          console.log("ROUTE", data);
           setRoute(data);
         });
     }
   }, [selectLine]);
+
+  // console.log("route.disruptions", route.routeSections[0].originationName);
 
   return (
     <div>
@@ -64,7 +66,20 @@ export default function Selector(props) {
       ) : (
         <span>Waiting to choose</span>
       )}
-      {/* {route ? <p>OriginationName:{route.(disruptions[0]).id}</p> : null} */}
+      {/* working great*/}
+      {/* {Object.keys(route).length !== 0 && selectLine ? (
+        <span>
+          OriginationName:
+          {route.routeSections.map((el) => el.originationName)[0]}
+        </span>
+      ) : (
+        <span>Wait for route</span>
+      )} */}
+      {Object.keys(route).length !== 0 && selectLine ? (
+        <RouteCards route={route} />
+      ) : (
+        <span>Wait for route</span>
+      )}
     </div>
   );
 }

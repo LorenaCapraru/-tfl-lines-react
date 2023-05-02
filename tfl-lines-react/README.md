@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# Challenge: "Transport for London (TfL) Line Information"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![TfL Line Information app](example-screenshots/level-300-screenshot.png)
 
-## Available Scripts
+## Challenge overview
 
-In the project directory, you can run:
+Make a React app that shows Transport for London (TfL) data from their API about tubes, buses, trains, etc.
 
-### `npm start`
+## Difficulty level
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This is a more advanced challenge. Level 100 can be completed by any student has done Week 2 of the CYF React module. Level 200 can be completed by anyone who has done Week 3 of the CYF React module.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Pre-requisites - what do I need to know to finish this challenge?
 
-### `npm test`
+Level 100:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `useState` Hook
+- `useEffect` Hook to fetch data on load (with empty dependencies array)
+- The `array.map` method and its use in React JSX
 
-### `npm run build`
+Later levels:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `useEffect` dependencies array (the second argument)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Don't** clone this repo.
 
-### `npm run eject`
+Make your own React app using `create-react-app`. See [this guide](https://docs.codeyourfuture.io/students/guides/creating-a-react-app) if you have forgotten how.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Write a plain HTML prototype (e.g. on CodePen). THEN, once you know the HTML you're attempting to create, work on the React version! This is not mandatory but it is recommended.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Fetching data
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Data for this project will need to be fetched from the TfL API. [Here is a link to their documentation](https://api.tfl.gov.uk/swagger/ui/index.html).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+There will be more detail in the challenge levels below.
 
-## Learn More
+## GitHub & Hosting:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Add your project to GitHub and host it on Netlify.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The GitHub repo name should be exactly: `tfl-lines-react`.
 
-### Code Splitting
+The Netlify site suffix should be `-tfl-lines`, so something like...
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+cyf-YOUR_GITHUB_USERNAME-tfl-lines
+```
 
-### Analyzing the Bundle Size
+## Level 100 challenge
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Write a React app that shows a selector for the different modes of transport available from TfL (for example bus, tube, rail).
 
-### Making a Progressive Web App
+- The app should fetch data from `https://api.tfl.gov.uk/Line/Meta/Modes` **when the page loads**. The documentation for this API is available [here](https://api.tfl.gov.uk/swagger/ui/index.html?url=/swagger/docs/v1#!/Line/Line_MetaModes)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Using this data, the app should show a `<select>` with all of the `modeName`s returned from the API
 
-### Advanced Configuration
+- When an option in the `<select>` is selected, it should show that `modeName` on screen
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Your project should be on GitHub and Netlify with correct names (see GitHub & Hosting section above)
 
-### Deployment
+### Example screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Mode selector:
 
-### `npm run build` fails to minify
+![Level 100 mode selector](example-screenshots/level-100-screenshot-1.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Selected mode:
+
+![Level 100 selected mode shown](example-screenshots/level-100-screenshot-2.png)
+
+[CLICK HERE TO SEE A VIDEO](example-screenshots/level-100-video.gif)
+
+## Level 200 challenge
+
+Show another selector for the different lines available for the selected mode of transport. So for example, if tube is selected, the second selector shows all of the tube lines.
+
+- The app should fetch data from `https://api.tfl.gov.uk/Line/Mode/${SELECTED_MODE_OF_TRANSPORT}` **when a mode of transport is selected**. The documentation for this API is available [here](https://api.tfl.gov.uk/swagger/ui/index.html?url=/swagger/docs/v1#!/Line/Line_GetByMode)
+
+- Using this data, the app should show second `<select>` with all of the line `id`s returned from the API
+
+- When an option in this `<select>` is selected, it should show that `id` on screen
+
+### Example screenshots
+
+Line selector:
+
+![Level 200 line selector](example-screenshots/level-200-screenshot-1.png)
+
+Selected line:
+
+![Level 200 selected line shown](example-screenshots/level-200-screenshot-2.png)
+
+[CLICK HERE TO SEE A VIDEO](example-screenshots/level-200-video.gif)
+
+## Level 300 challenge
+
+Show the start and end locations for the selected line. So for example, if the Victoria line is selected, display Walthamstow Central Underground Station and Brixton Underground Station.
+
+- The app should fetch data from `https://api.tfl.gov.uk/Line/${SELECTED_LINE}/Route` **when a line is selected**. The documentation for this API is available [here](https://api.tfl.gov.uk/swagger/ui/index.html?url=/swagger/docs/v1#!/Line/Line_LineRoutesByIds).
+
+- Using this data, the app show the `originationName` (start of the line) and `destinationName` (end of the line) from the **first** item in the `routeSections` array.
+
+### Example screenshots
+
+![Level 300](example-screenshots/level-300-screenshot.png)
+
+[CLICK HERE TO SEE A VIDEO](example-screenshots/level-300-video.gif)
+
+## Level 999 challenge
+
+This challenge is **OPTIONAL**!
+
+Here are some additional ideas for improving your app:
+
+- If a mode of transport is **changed** reset the line selector and the line start/end so that they do not show out-of-date information (see video below)
+
+- Improve the styling. Try to make it match the screenshots as closely as possible. Or, even better, try to improve the design with your own ideas
+
+- Install the [aXe Browser Extension](https://www.deque.com/axe/axe-for-web/) in your browser.
+  - This extension allows you to test for [_accessibility_ problems](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/What_is_accessibility) in your application. It adds a new tab inside your Dev Tools called axe. Navigate to this tab, then click Analyze
+  - Try to solve any accessibility problems it tells you about. It may be useful to enable the Highlight mode so that you can see more easily which element are causing the problem. The Learn more link is also a useful resource
+
+### Example screenshots
+
+Resetting the line selector and line start/end:
+
+[CLICK HERE TO SEE A VIDEO](example-screenshots/level-999-video.gif)
+
+Running the aXe extension:
+
+![aXe extension analyze button](example-screenshots/level-999-screenshot-1.png)
+
+aXe extension results:
+
+![aXe extention results](example-screenshots/level-999-screenshot-2.png)
+
+## Credits
+
+Inspired by Ahmad Ali's original TfL exercise.

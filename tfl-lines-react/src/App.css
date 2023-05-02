@@ -1,1 +1,17 @@
+.cardsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
+.card {
+  background-color: rgba(43, 108, 176, 255);
+  color: white;
+  border-radius: 10px;
+}
+
+.card p {
+  margin: 0px;
+  padding: 2%;
+}
