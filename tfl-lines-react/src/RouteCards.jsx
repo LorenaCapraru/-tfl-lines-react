@@ -9,7 +9,7 @@ export default function RouteCards(props) {
           {props.route.routeSections.map((el) => el.originationName)[0]}
         </p>
       </div>
-      <span>&#8594;</span>
+      <span>➔</span>
       <div className="card">
         <p className="descriptionLane">END OF LINE</p>
         <p className="routeName">

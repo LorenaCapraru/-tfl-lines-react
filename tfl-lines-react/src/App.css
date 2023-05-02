@@ -30,21 +30,38 @@
   margin: 10% 2%;
   font-size: 1.2em;
   font-weight: bolder;
+  text-align: center;
 }
 
 body {
-  margin: 1% 5%;
+  margin: 1% 10%;
+  font-family: "Roboto", sans-serif;
 }
 h1 {
-  font-family: "Roboto", sans-serif;
   font-size: 3em;
 }
 
 .ValueVsLine {
   font-weight: bolder;
+  margin:2% 0px;
 }
 .selectedValueDropdown {
+  background-color: #edf2f8;
+  color: #525d6f;
+  padding: 1% 2%;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  font-weight: bolder;
+  margin-bottom: 2%;
 }
 
 .selectedLineDropdown {
+  color: #525d6f;
+  padding: 1% 2%;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  font-weight: bolder;
+  border: 1px solid #525d6f;
 }
