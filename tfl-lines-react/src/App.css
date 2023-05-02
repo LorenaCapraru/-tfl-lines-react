@@ -38,12 +38,12 @@ body {
   font-family: "Roboto", sans-serif;
 }
 h1 {
-  font-size: 3em;
+  font-size: 300%;
 }
 
 .ValueVsLine {
   font-weight: bolder;
-  margin:2% 0px;
+  margin: 2% 0px;
 }
 .selectedValueDropdown {
   background-color: #edf2f8;
@@ -64,4 +64,23 @@ h1 {
   width: 100%;
   font-weight: bolder;
   border: 1px solid #525d6f;
+}
+
+@media only screen and (max-width: 600px) {
+  .cardsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardsContainer span {
+    transform: rotate(90deg);
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 200%;
+  }
 }
