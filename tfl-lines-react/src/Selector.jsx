@@ -43,7 +43,11 @@ export default function Selector(props) {
       {/* <label for="selectMode" id="selectMode">
         Select a Travel Mode
       </label> */}
-      <select value={selectedValue} onChange={handleSelectChange}>
+      <select
+        className="selectedValueDropdown"
+        value={selectedValue}
+        onChange={handleSelectChange}
+      >
         <option>Choose a Mode of transport...</option>
         {props.modes.map((el) => (
           <option>{el.modeName}</option>
@@ -53,7 +57,11 @@ export default function Selector(props) {
       {selectedValue !== "Choose a Mode of transport..." &&
       selectedValue.length > 0 ? (
         <>
-          <select value={selectLine} onChange={handleSelectLine}>
+          <select
+            className="selectedLineDropdown"
+            value={selectLine}
+            onChange={handleSelectLine}
+          >
             <option>Select a line...</option>
             {linesData.map((el) => (
               <option>{el.name}</option>
