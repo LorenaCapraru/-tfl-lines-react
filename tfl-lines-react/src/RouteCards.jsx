@@ -20,7 +20,7 @@ export default function RouteCards(props) {
           </div>
         </div>
       ) : (
-        <span>no routes available</span>
+        <span>No routes available</span>
       )}
     </div>
   );

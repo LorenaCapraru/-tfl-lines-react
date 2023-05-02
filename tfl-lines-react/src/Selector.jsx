@@ -52,7 +52,8 @@ export default function Selector(props) {
       </select>
 
       {selectedValue !== "Choose a Mode of transport..." &&
-      selectedValue.length > 0 ? (
+      selectedValue.length > 0 &&
+      linesData.length > 0 ? (
         <>
           <select
             className="selectedLineDropdown"
@@ -65,8 +66,12 @@ export default function Selector(props) {
             ))}
           </select>
         </>
+      ) : selectedValue !== "Choose a Mode of transport..." &&
+        selectedValue.length > 0 &&
+        linesData.length === 0 ? (
+        <div>No lines available</div>
       ) : (
-        <span>Waiting to choose</span>
+        ""
       )}
       {Object.keys(route).length !== 0 && selectLine ? (
         <>
@@ -77,7 +82,7 @@ export default function Selector(props) {
           <RouteCards route={route} />
         </>
       ) : (
-        <span>Wait for route</span>
+        ""
       )}
     </div>
   );
