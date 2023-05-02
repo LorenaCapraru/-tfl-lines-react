@@ -66,6 +66,20 @@ h1 {
   border: 1px solid #525d6f;
 }
 
+.attentionNoLines {
+  background-color: rgba(231, 96, 96, 0.6);
+  color: white;
+  padding: 1% 2%;
+  border: none;
+  border-radius: 5px;
+  font-weight: bolder;
+  /* border: 1px solid rgba(231, 96, 96, 0.6); */
+}
+.attentionNoLines span {
+  font-size: 2em;
+  font-weight: bolder;
+}
+
 @media only screen and (max-width: 600px) {
   .cardsContainer {
     display: flex;

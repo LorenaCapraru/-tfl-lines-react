@@ -69,11 +69,13 @@ export default function Selector(props) {
       ) : selectedValue !== "Choose a Mode of transport..." &&
         selectedValue.length > 0 &&
         linesData.length === 0 ? (
-        <div>No lines available</div>
+        <div className="attentionNoLines">
+          <span>&#9888; </span> No lines available. Choose a different Line.
+        </div>
       ) : (
         ""
       )}
-      {Object.keys(route).length !== 0 && selectLine ? (
+      {Object.keys(route).length !== 0 && selectLine !== "Select a line..." ? (
         <>
           <p className="ValueVsLine">
             {selectedValue.toString().toUpperCase()}:{" "}
