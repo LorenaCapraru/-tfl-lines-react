@@ -83,9 +83,6 @@ export default function Selector(props) {
           </p>
           <RouteCards route={route} />
         </>
-      ) : Object.keys(route).length !== 0 &&
-        selectLine === "Select a line..." ? (
-        ""
       ) : (
         ""
       )}
