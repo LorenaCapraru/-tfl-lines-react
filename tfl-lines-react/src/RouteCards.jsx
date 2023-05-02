@@ -4,14 +4,17 @@ export default function RouteCards(props) {
   return (
     <div className="cardsContainer">
       <div className="card">
-        <div>
-          <p> Start of Line</p>
+        <p className="descriptionLane">START OF LINE</p>
+        <p className="routeName">
           {props.route.routeSections.map((el) => el.originationName)[0]}
-        </div>
+        </p>
       </div>
+      <span>&#8594;</span>
       <div className="card">
-        <p> End of Line</p>
-        <p>{props.route.routeSections.map((el) => el.destinationName)[0]}</p>
+        <p className="descriptionLane">END OF LINE</p>
+        <p className="routeName">
+          {props.route.routeSections.map((el) => el.destinationName)[0]}
+        </p>
       </div>
     </div>
   );

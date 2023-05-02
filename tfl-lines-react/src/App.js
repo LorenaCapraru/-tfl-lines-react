@@ -15,6 +15,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Transport for London Line Information</h1>
       <Selector modes={modes} />
       {/* {modes.map((el) => el.modeName)} */}
     </div>

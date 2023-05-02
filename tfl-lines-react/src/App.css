@@ -2,16 +2,44 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
+}
+.cardsContainer span {
+  font-size: 5em;
 }
 
 .card {
   background-color: rgba(43, 108, 176, 255);
   color: white;
   border-radius: 10px;
+  width: 40%;
+  height: auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
-.card p {
+.descriptionLane {
   margin: 0px;
   padding: 2%;
+  font-size: 0.8em;
+  font-weight: bolder;
+}
+
+.routeName {
+  margin: 10% 2%;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+body {
+  margin: 1% 5%;
+}
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 3em;
+}
+
+.ValueVsLine {
+  font-weight: bolder;
 }
