@@ -39,10 +39,6 @@ export default function Selector(props) {
   console.log("selectedValue", selectedValue.toString().toUpperCase());
   return (
     <div>
-      {/* {props.modes.map((el) => el.modeName)} */}
-      {/* <label for="selectMode" id="selectMode">
-        Select a Travel Mode
-      </label> */}
       <select
         className="selectedValueDropdown"
         value={selectedValue}
@@ -67,7 +63,6 @@ export default function Selector(props) {
               <option>{el.name}</option>
             ))}
           </select>
-          {/* <p>You Selected Line: {selectLine}</p> */}
         </>
       ) : (
         <span>Waiting to choose</span>
