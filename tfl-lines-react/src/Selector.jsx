@@ -36,7 +36,6 @@ export default function Selector(props) {
     }
   }, [selectLine]);
 
-  // console.log("route.disruptions", route.routeSections[0].originationName);
   console.log("selectedValue", selectedValue.toString().toUpperCase());
   return (
     <div>
