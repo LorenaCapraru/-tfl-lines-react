@@ -9,6 +9,7 @@ export default function Selector(props) {
 
   let handleSelectChange = (e) => {
     setSelectedValue(e.target.value);
+    setSelectLine("");
   };
 
   const handleSelectLine = (e) => {
